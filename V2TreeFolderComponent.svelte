@@ -854,11 +854,11 @@
 >
 	{#if isRoot || !isMainTree}
 		{#if isRoot}
-			<div class="tree-item-self nav-folder-title">
+			<!-- <div class="tree-item-self nav-folder-title">
 				<div class="tree-item-inner nav-folder-title-content">
 					{headerTitle}
 				</div>
-			</div>
+			</div> -->
 		{/if}
 	{:else}
 		<OnDemandRender
@@ -914,7 +914,7 @@
 	{/if}
 	<!-- Tags and leftover items -->
 	{#if !collapsed}
-		<div class="tree-item-children nav-folder-children">
+		<div class={isRoot ? "" : "tree-item-children nav-folder-children"}>
 			{#each childrenDisp as items}
 				{#each items as [f, tagName, tagNameDisp, subitems]}
 					{#if trail.length === 0 || f.startsWith(trail[trail.length - 1])}
