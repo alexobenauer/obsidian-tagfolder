@@ -137,3 +137,28 @@
 	background-position: 0 0;
 	background-size: 10px 10px;
 }
+
+/* Hide tags list in sidebar + other cust's */
+
+.tf-taglist {
+	display: none;
+}
+  
+.tagfolder-quantity span {
+	background: none;
+	border: none;
+	opacity: 0.5;
+	font-size: 0.8em;
+}
+  
+.tf-tag-each {
+	font-weight: 700;
+}
+  
+.tagfolder-tag.tag-tag.tf-tag span.tf-tag-each:first-child:not(:empty):before {
+	content: none;
+}
+  
+.tagfolder-tag.tag-tag span.tf-tag-each::before {
+	content: none;
+}

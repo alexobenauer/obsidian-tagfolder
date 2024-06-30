@@ -1,6 +1,6 @@
 {
-	"id": "obsidian-tagfolder",
-	"name": "TagFolder",
+	"id": "obsidian-tagfolder-customized",
+	"name": "TagFolder (Customized)",
 	"version": "0.18.7",
 	"minAppVersion": "0.12.0",
 	"description": "Show tags as folder",

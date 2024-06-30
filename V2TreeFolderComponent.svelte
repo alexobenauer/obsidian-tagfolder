@@ -917,35 +917,39 @@
 		<div class="tree-item-children nav-folder-children">
 			{#each childrenDisp as items}
 				{#each items as [f, tagName, tagNameDisp, subitems]}
-					<svelte:self
-						{viewType}
-						items={subitems}
-						thisName={f}
-						trail={[...trail, ...suppressLevels, f]}
-						{folderIcon}
-						{openFile}
-						isRoot={false}
-						{showMenu}
-						{isMainTree}
-						{openScrollView}
-						{hoverPreview}
-						{tagName}
-						{tagNameDisp}
-						depth={isInDedicatedTag ? depth : depth + 1}
-					/>
+					{#if trail.length === 0 || f.startsWith(trail[trail.length - 1])}
+						<svelte:self
+							{viewType}
+							items={subitems}
+							thisName={f}
+							trail={[...trail, ...suppressLevels, f]}
+							{folderIcon}
+							{openFile}
+							isRoot={false}
+							{showMenu}
+							{isMainTree}
+							{openScrollView}
+							{hoverPreview}
+							{tagName}
+							{tagNameDisp}
+							depth={isInDedicatedTag ? depth : depth + 1}
+						/>
+					{/if}
 				{/each}
 			{/each}
 			{#each leftOverItemsDisp as items}
 				{#each items as item}
-					<TreeItemItemComponent
-						{item}
-						{openFile}
-						trail={isRoot
-							? [...trail]
-							: [...trail, ...suppressLevels]}
-						{showMenu}
-						{hoverPreview}
-					/>
+					{#if item.tags.includes(trail.length > 0 ? trail[trail.length - 1].replace(/\/$/, '') : '') || (item.tags.length > 0 && item.tags[0].startsWith('_'))}
+						<TreeItemItemComponent
+							{item}
+							{openFile}
+							trail={isRoot
+								? [...trail]
+								: [...trail, ...suppressLevels]}
+							{showMenu}
+							{hoverPreview}
+						/>
+					{/if}
 				{/each}
 			{/each}
 		</div>
