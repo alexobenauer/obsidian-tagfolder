@@ -548,7 +548,7 @@
 	// -- Displaying
 
 	$: isActive =
-		(_items && _items.some((e) => e.path == _currentActiveFilePath)) ||
+		// (_items && _items.some((e) => e.path == _currentActiveFilePath)) ||
 		(viewType == "links" &&
 			(thisName == _currentActiveFilePath ||
 				tags.contains(_currentActiveFilePath) ||
